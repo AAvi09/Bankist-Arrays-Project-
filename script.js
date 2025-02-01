@@ -214,3 +214,16 @@ console.log(names.splice(2, 2));
 const numbers = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 const numbers2 = numbers.reverse();
 console.log(numbers2);
+
+const euroToUsd = 1.1;
+
+const movementUSD = movements.map(mov => mov * euroToUsd);
+console.log(movements);
+
+const movementsDescription = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1} : You ${mov > 0 ? 'deposited ' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescription);
