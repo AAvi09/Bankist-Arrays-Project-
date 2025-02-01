@@ -76,6 +76,11 @@ const displayMovements = movements => {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = mov => {
+  const balance = mov.reduce((acc, mov) => mov + acc, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 const createUsernames = accs => {
   accs.forEach(acc => {
     acc.username = acc.owner
@@ -244,3 +249,14 @@ const deposits = movements.filter(mov => mov > 0);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(deposits);
 console.log(withdrawals);
+
+//MAXIMUM VALUE
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements[0]);
+
+console.log(max);
