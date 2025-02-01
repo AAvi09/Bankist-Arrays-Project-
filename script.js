@@ -277,3 +277,6 @@ const max = movements.reduce((acc, mov) => {
 }, movements[0]);
 
 console.log(max);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
