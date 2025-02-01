@@ -61,6 +61,21 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = movements => {
+  containerMovements.innerHTML = '';
+  movements.forEach((mov, i, arr) => {
+    const type = mov > 0 ? `deposit` : `withdrawal`;
+
+    const html = ` <div class="movements__row">
+    <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+  
+    <div class="movements__value">${mov}</div>
+    </div>`;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -82,46 +97,15 @@ currency.forEach(function (value, key, set) {
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-for (const [i, movement] of movements.entries()) {
-  if (movement > 0) {
-    console.log(` Movement ${i + 1}  : you deposited amount of ${movement}`);
-  } else {
-    console.log(
-      ` Movement ${i + 1}  : you withdrew amount of ${Math.abs(movement)}`
-    );
-  }
-}
-console.log(`------------FOR EACH---------------`);
-movements.forEach(function (mov, i, arr) {
+console.group('*--*-*--*--*--*-*FOR-EACH-----**-*--*-*-*-*-*-*-*-*-*-*');
+movements.forEach((mov, i, arr) => {
   if (mov > 0) {
-    console.log(` Movement ${i + 1}  : you deposited amount of ${mov}`);
+    console.log(`Movement ${i + 1} : You deposited ${mov}`);
   } else {
-    console.log(
-      ` Movement ${i + 1}  : you withdrew amount of ${Math.abs(mov)}`
-    );
+    console.log(`Movemet ${i + 1} : You withdrew ${Math.abs(mov)}`);
   }
 });
 /////////////////////////////////////////////////
-const displayMovements = function (movements, sort = false) {
-  containerMovements.innerHTML = '';
-
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
-
-  movs.forEach(function (mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
-
-    const html = `
-      <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
-        <div class="movements__value">${mov}€</div>
-      </div>
-    `;
-
-    containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
-};
 
 //SLICE
 let arr = ['a', 'b', 'c', 'd', 'e'];
@@ -222,3 +206,11 @@ console.log(letters.join('-'));
 // const result = new showName();
 // const output = result.showName;
 // output();
+
+const names = ['rocko', 'paulie', 'jimmy', 'tommy', 'adrian'];
+console.log(names.slice(2, 4));
+console.log(names.splice(2, 2));
+
+const numbers = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+const numbers2 = numbers.reverse();
+console.log(numbers2);
