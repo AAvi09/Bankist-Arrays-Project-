@@ -81,6 +81,23 @@ const calcDisplayBalance = mov => {
   labelBalance.textContent = `${balance} EUR`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = mov => {
+  const incomes = mov.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}💶`;
+
+  const out = mov.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}💶`;
+
+  const interest = mov
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, interest) => acc + interest, 0);
+  labelSumInterest.textContent = `${interest}💶`;
+};
+
+calcDisplaySummary(account1.movements);
 const createUsernames = accs => {
   accs.forEach(acc => {
     acc.username = acc.owner
