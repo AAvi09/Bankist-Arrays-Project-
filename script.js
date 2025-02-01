@@ -87,6 +87,7 @@ const createUsernames = accs => {
 };
 createUsernames(accounts);
 console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -238,3 +239,8 @@ const movementsDescription = movements.map(
     )}`
 );
 console.log(movementsDescription);
+
+const deposits = movements.filter(mov => mov > 0);
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(deposits);
+console.log(withdrawals);
