@@ -77,7 +77,7 @@ const displayMovements = movements => {
 displayMovements(account1.movements);
 
 const calcDisplayBalance = acc => {
-  acc.balance = mov.reduce((acc, mov) => mov + acc, 0);
+  acc.balance = acc.movements.reduce((acc, mov) => mov + acc, 0);
   labelBalance.textContent = `${acc.balance} EUR`;
 };
 calcDisplayBalance(account1);
@@ -143,7 +143,7 @@ btnTransfer.addEventListener('click', e => {
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  inputTransferTo = inputTransferAmount = '';
+  inputTransferTo.value = inputTransferAmount.value = '';
   if (
     amount > 0 &&
     receiverAcc &&
