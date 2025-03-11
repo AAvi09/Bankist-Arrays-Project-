@@ -194,8 +194,14 @@ console.log(movements);
 const lastWithDrawal = movements.findLast(mov => mov < 0);
 console.log(lastWithDrawal);
 
-const latestLargeMovementIndex = movements.findLastIndex(mov => mov > 1000);
-console.log(latestLargeMovementIndex);
+const latestLargeMovementIndex = movements.findLastIndex(
+  mov => Math.abs(mov) > 1000
+);
+console.log(
+  `your latest large movement was ${
+    movements.length - latestLargeMovementIndex
+  } movements ago`
+);
 
 console.group('*--*-*--*--*--*-*FOR-EACH-----**-*--*-*-*-*-*-*-*-*-*-*');
 movements.forEach((mov, i, arr) => {
