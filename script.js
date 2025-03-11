@@ -190,6 +190,12 @@ currency.forEach(function (value, key, set) {
 });
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+const lastWithDrawal = movements.findLast(mov => mov < 0);
+console.log(lastWithDrawal);
+
+const latestLargeMovementIndex = movements.findLastIndex(mov => mov > 1000);
+console.log(latestLargeMovementIndex);
 
 console.group('*--*-*--*--*--*-*FOR-EACH-----**-*--*-*-*-*-*-*-*-*-*-*');
 movements.forEach((mov, i, arr) => {
