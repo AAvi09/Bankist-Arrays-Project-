@@ -202,7 +202,7 @@ console.log(
     movements.length - latestLargeMovementIndex
   } movements ago`
 );
-
+const anyDeposits = movements.some(mov => mov > 0);
 console.group('*--*-*--*--*--*-*FOR-EACH-----**-*--*-*-*-*-*-*-*-*-*-*');
 movements.forEach((mov, i, arr) => {
   if (mov > 0) {
